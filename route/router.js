@@ -8,19 +8,19 @@ const router = {
         const pathname = parsedUrl.pathname;
 
         if (pathname === '/') {
-            res.end({success: true})
-            // controller.homeHandleRequest(req, res);
+            res.end("Home Page")
+            controller.homeHandleRequest(req, res);
         } else if (pathname === '/login') {
-             res.end({success: true})
+             res.end("Login Page")
             // controller.loginHandleRequest(req, res);
         } else if (pathname === '/logout') {
-             res.end({success: true})
+             res.end("Logout Page")
             // controller.logoutHandleRequest(req, res);
         } else if (pathname === '/getToken') {
-             res.end({success: true})
+             res.end("getToken Page")
             // controller.getTokenHandleRequest(req, res);
         }else if (pathname === '/getUserDatas') {
-             res.end({success: true})
+             res.end("GetDAtas Page")
             // controller.getUserDatas(req, res);
         }
         // } else {
