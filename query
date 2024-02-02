@@ -1,0 +1,91 @@
+{
+  user {
+    id
+    login
+    firstName
+    lastName
+    campus
+    auditRatio
+    totalUp
+    totalDown
+    attrs
+    groups {
+      group {
+        members {
+          user {
+            login
+          }
+        }
+        object {
+          name
+        }
+        auditors(where:{grade: {_is_null: false}}) {
+          auditor {
+            login
+          }
+          grade
+        }
+      }
+    }
+  }
+  audits: transaction(
+    order_by: {createdAt: asc}
+    where: {type: {_regex: "up|down"}}
+  ) {
+    type
+    amount
+    path
+    createdAt
+  }
+  xp: transaction(
+    order_by: {createdAt: asc}
+    where: {type: {_eq: "xp"}, eventId: {_eq: 56}}
+  ) {
+    createdAt
+    amount
+    path
+  }
+  skills: transaction(
+    order_by: {type: asc, createdAt: desc,amount:desc}
+    distinct_on: [type]
+    where: {eventId: {_eq: 56}, _and: {type: {_like: "skill_%"}}}
+  ) {
+    type
+    amount
+  }
+  xpTotal: transaction_aggregate(where: {type: {_eq: "xp"}, eventId: {_eq: 56}}) {
+    aggregate {
+      sum {
+        amount
+      }
+    }
+  }
+}
+
+
+{
+  user{
+    id
+    }
+     auditsDows: transaction_aggregate(
+    order_by: {createdAt: asc}
+    where: {type: {_regex: "down"}}
+    ) {
+    aggregate{
+      count
+    }
+  }
+  
+  auditsUp: transaction_aggregate(
+    order_by: {createdAt: asc}
+    where: {type: {_regex: "up"}}
+    ) {
+    aggregate{
+      count
+    }
+    nodes{
+      path
+      type
+    }
+  }
+}

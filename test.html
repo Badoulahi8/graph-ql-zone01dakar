@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagramme à Barres avec SVG et Info-bulle</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        svg {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+
+        rect {
+            transition: height 0.5s;
+            cursor: pointer; /* Ajout de la propriété cursor pour indiquer que les éléments sont interactifs */
+        }
+
+        text {
+            text-anchor: middle;
+            font-size: 12px;
+            fill: #333;
+        }
+
+        .tooltip {
+            display: none;
+            position: relative;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tooltip" id="tooltip"></div>
+
+    <svg>
+        <!-- Barre pour le téléphone -->
+        <rect x="20" y="140" width="60" height="30" fill="#3498db" onmouseover="showTooltip('Téléphone')" onmouseout="hideTooltip()"></rect>
+        <text x="50" y="170">Téléphone</text>
+
+        <!-- Barre pour la machine -->
+        <rect x="120" y="80" width="60" height="80" fill="#2ecc71" onmouseover="showTooltip('Machine')" onmouseout="hideTooltip()"></rect>
+        <text x="150" y="170">Machine</text>
+
+        <!-- Barre pour le téléviseur -->
+        <rect x="220" y="105" width="60" height="65" fill="#e74c3c" onmouseover="showTooltip('Téléviseur')" onmouseout="hideTooltip()"></rect>
+        <text x="250" y="170">Téléviseur</text>
+    </svg>
+
+    <script>
+        function showTooltip(text) {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.innerHTML = text;
+            tooltip.style.display = 'block';
+        }
+
+        function hideTooltip() {
+            const tooltip = document.getElementById('tooltip');
+            tooltip.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
