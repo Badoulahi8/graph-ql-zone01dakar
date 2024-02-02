@@ -1,5 +1,6 @@
 const url = require('url');
 const controller = require('../controllers/controller.js');
+const { log } = require('console');
 
 const router = {
     handleRequest: (req, res) => {
@@ -7,15 +8,20 @@ const router = {
         const pathname = parsedUrl.pathname;
 
         if (pathname === '/') {
-            controller.homeHandleRequest(req, res);
+            res.end({success: true})
+            // controller.homeHandleRequest(req, res);
         } else if (pathname === '/login') {
-            controller.loginHandleRequest(req, res);
+             res.end({success: true})
+            // controller.loginHandleRequest(req, res);
         } else if (pathname === '/logout') {
-            controller.logoutHandleRequest(req, res);
+             res.end({success: true})
+            // controller.logoutHandleRequest(req, res);
         } else if (pathname === '/getToken') {
-            controller.getTokenHandleRequest(req, res);
+             res.end({success: true})
+            // controller.getTokenHandleRequest(req, res);
         }else if (pathname === '/getUserDatas') {
-            controller.getUserDatas(req, res);
+             res.end({success: true})
+            // controller.getUserDatas(req, res);
         }
         // } else {
         //     const error = {
