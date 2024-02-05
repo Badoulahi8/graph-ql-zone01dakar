@@ -15,6 +15,7 @@ function CreateLogin() {
         </form>
     `
     document.body.appendChild(login)
+    document.body.style.height = "100vh"
 }
 
 export function Login() {

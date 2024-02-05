@@ -1,19 +1,21 @@
 export function CleanBody() {
-    var login = document.querySelector('.loginBox')
-    var header = document.querySelector('header')
-    var container = document.querySelector('.container')
-    var containerGraphic = document.querySelector('.container-graphic')
+    const login = document.querySelector('.loginBox');
+    const header = document.querySelector('header');
+    const container = document.querySelector('.container');
+    const containers = document.querySelectorAll('.container-graphic');
 
-    if (login) {
-        document.body.removeChild(login)
+    if (login && login.parentNode) {
+        login.parentNode.removeChild(login);
     }
-    if (header) {
-        document.body.removeChild(header)
+    if (header && header.parentNode) {
+        header.parentNode.removeChild(header);
     }
-    if (container) {
-        document.body.removeChild(container)
+    if (container && container.parentNode) {
+        container.parentNode.removeChild(container);
     }
-    if (containerGraphic) {
-        document.body.removeChild(containerGraphic)
-    }
+    containers.forEach(container => {
+        if (container && container.parentNode) {
+            container.parentNode.removeChild(container);
+        }
+    });
 }

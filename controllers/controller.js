@@ -3,7 +3,6 @@ const path = require('path');
 const querystring = require('querystring');
 const cookie = require('cookie');
 const endpoint = 'https://learn.zone01dakar.sn/api/graphql-engine/v1/graphql';
-// const { GraphQLClient } = require('graphql-request');
 
 const controller = {
     homeHandleRequest: async (req, res) => {
@@ -56,7 +55,6 @@ const controller = {
                             res.writeHead(200, { 'Content-Type': 'application/json' });
                             res.end(JSON.stringify({ success: true, token: responseData }));
                         } else {
-                            // res.writeHead(response.status, { 'Content-Type': 'application/json' });
                             res.end(JSON.stringify({ success: false, message: responseData.error }));
                         }
                     } catch (error) {

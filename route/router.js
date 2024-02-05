@@ -17,13 +17,6 @@ const router = {
         }else if (pathname === '/getUserDatas') {
             controller.getUserDatas(req, res);
         }
-        // } else {
-        //     const error = {
-        //         status: 404,
-        //         text: 'Page non trouvée',
-        //     };
-        //     controller.errorHandleRequest(req, res, error);
-        // }
     }
 };
 
