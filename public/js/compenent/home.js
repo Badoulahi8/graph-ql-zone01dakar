@@ -9,16 +9,15 @@ export async function Home() {
     var UserDatas = await Fetch("/getUserDatas");
     if (UserDatas.success) {
         let User = UserDatas.datas.user[0]
-        let xp = UserDatas.datas.xpTotal.aggregate.sum.amount
-        let level = UserDatas.datas.level[0].amount
         let skills = UserDatas.datas.skills
-
+        let xp = UserDatas.datas.xpTotal.aggregate.sum.amount
+        let level = UserDatas.datas.level[0]
         Header()
-        if (User !== null && xp !== null && level !== null && skills !== null){
-            containerInfos(User, xp, level)
+        if (level && User) {
+            containerInfos(User, xp, level.amount)
             containerSkills(skills)
             containerRation(User)
+            document.body.style.height = "150vh"
         }
-        document.body.style.height = "150vh"
     }
 }
