@@ -13,7 +13,7 @@ export async function Home() {
         let xp = UserDatas.datas.xpTotal.aggregate.sum
         let level = UserDatas.datas.level[0]
         Header()
-        if (level && User && xp) {
+        if (level && xp && User) {
             containerInfos(User, xp.amount, level.amount)
             containerSkills(skills)
             containerRation(User)
